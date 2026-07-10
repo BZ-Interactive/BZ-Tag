@@ -1,0 +1,17 @@
+[project]
+name = "bztag"
+version = "0.1.0"
+description = "MP3 Tag Editor with TUI"
+readme = "PLAN.md"
+requires-python = ">=3.10"
+dependencies = [
+    "textual>=0.40.0",
+    "mutagen>=1.47.0",
+]
+
+[project.scripts]
+bztag = "main:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
