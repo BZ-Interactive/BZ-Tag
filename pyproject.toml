@@ -1,17 +1,26 @@
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
-name = "bztag"
+name = "bz-tag"
 version = "0.1.0"
-description = "MP3 Tag Editor with TUI"
-readme = "PLAN.md"
+description = "A terminal-based MP3 tag editor"
+readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "textual>=0.40.0",
-    "mutagen>=1.47.0",
+    "urwid",
+    "mutagen",
+    "pillow",
+    "term-image",
 ]
 
 [project.scripts]
-bztag = "main:main"
+bztag = "bztag.cli:main"
 
-[build-system]
-requires = ["setuptools>=68.0"]
-build-backend = "setuptools.backends._legacy:_Backend"
+[tool.hatch.build]
+dev-mode-dirs = ["src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bztag"]

@@ -1,2 +1,0 @@
-textual>=0.40.0
-mutagen>=1.47.0
