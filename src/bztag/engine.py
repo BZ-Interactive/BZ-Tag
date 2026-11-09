@@ -97,6 +97,16 @@ class Engine:
             composed["track_number"] = f'{composed["track_number"]}/{self._total}'
         return composed
 
+    def run(self, changes, select_all=False, dry=False):
+        """One-shot batch verb: (select all), then apply.
+
+        Convenience for frontends that use the Engine exactly once;
+        the TUI will keep using apply() on its live selection directly.
+        """
+        if select_all:
+            self.select_all()
+        return self.apply(changes, dry=dry)
+
 
 def _describe(old, new):
     """Render 'key: old -> new' lines for FileResult messages."""

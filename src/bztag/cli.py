@@ -149,10 +149,8 @@ def resolve_action(args):
         raise ActionError("editing a directory requires --all")
 
     engine = Engine(target)
-    if args.all or is_file:
-        engine.select_all()
+    results = engine.run(edits, select_all=args.all or is_file, dry=args.dry_run)
 
-    results = engine.apply(edits, dry=args.dry_run)
     tag = "(dry-run) " if args.dry_run else ""
     counts = {}
     for result in results:
